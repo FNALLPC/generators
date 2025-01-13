@@ -24,6 +24,10 @@ E.g. you want the inclusive W+jets sample, start from a DAS query (requires a va
 dasgoclient -query="/WJetsToLNu*/RunIISummer20UL18*/MINIAODSIM"
 ~~~
 {: .source}
+> ## Recall
+> Instructions to set up and verify your grid certificate have been covered in [pre-exercises](https://fnallpc.github.io/cms-das-pre-exercises/05-CMSDASPreExercise-RemoteData/index.html).
+> {: .source}
+{: .callout}
 
 Alternatively there's also a web-based DAS client: [https://cmsweb.cern.ch/das/](DAS client).
 

@@ -29,7 +29,7 @@ dasgoclient -query="/WJetsToLNu*/RunIISummer20UL18*/MINIAODSIM"
 > {: .source}
 {: .callout}
 
-Alternatively there's also a web-based DAS client: [https://cmsweb.cern.ch/das/](DAS client).
+Alternatively there's also a web-based DAS client: [https://cmsweb.cern.ch/das/](DAS client), use `dataset=/WJetsToLNu*/RunIISummer20UL18*/MINIAODSIM` to perform your search.
 
 ~~~
 /WJetsToLNu_012JetsNLO_34JetsLO_EWNLOcorr_13TeV-sherpa/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1-v4/MINIAODSIM
@@ -100,15 +100,74 @@ In the following, we will use a CMSSW analyzer called GenXSecAnalyzer to compute
 The analyzer takes a list of EDM files as input (i.e., no NanoAOD or NanoGEN).
 Make sure you are in a CMSSW environment
 ~~~bash
-cd ${CDGPATH}/CMSSW_12_4_8/src/
+cd ~/nobackup/cmsdas_2025_gen/CMSSW_12_4_8/src/
 cmsenv
 ~~~
 {: .source}
 
 You can then use the prepared configurations to obtain the cross section for a sample of your liking, e.g.  `/TTWJetsToLNu_TuneCP5_13TeV-amcatnloFXFX-madspin-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1-v1/MINIAODSIM`
+
+Open your favorite editor and create a new file `xsec_ana.py`:
+~~~python
+import FWCore.ParameterSet.Config as cms
+from FWCore.ParameterSet.VarParsing import VarParsing
+options = VarParsing ('analysis')
+options.parseArguments()
+
+process = cms.Process('ANA')
+
+# import of standard configurations
+process.load('Configuration.StandardSequences.Services_cff')
+process.load('SimGeneral.HepPDTESSource.pythiapdt_cfi')
+process.load('FWCore.MessageService.MessageLogger_cfi')
+process.load('Configuration.EventContent.EventContent_cff')
+process.load('SimGeneral.MixingModule.mixNoPU_cfi')
+process.load('Configuration.StandardSequences.GeometryRecoDB_cff')
+process.load('Configuration.StandardSequences.MagneticField_38T_cff')
+process.load('Configuration.StandardSequences.Generator_cff')
+process.load('IOMC.EventVertexGenerators.VtxSmearedRealistic8TeVCollision_cfi')
+process.load('GeneratorInterface.Core.genFilterSummary_cff')
+process.load('Configuration.StandardSequences.EndOfProcess_cff')
+process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
+
+from Configuration.AlCa.GlobalTag import GlobalTag
+process.GlobalTag = GlobalTag(process.GlobalTag, 'auto:mc', '')
+process.maxEvents = cms.untracked.PSet(
+    input = cms.untracked.int32(options.maxEvents)
+)
+
+process.MessageLogger.cerr.FwkReport.reportEvery = 10000
+
+# Handle different input options
+inputFiles=[]
+if len(options.inputFiles)==1 and (".root" not in options.inputFiles[0]):
+    flist = open(options.inputFiles[0])
+    inputFiles = flist.readlines()
+    flist.close()
+else:
+    inputFiles = options.inputFiles
+
+process.source = cms.Source(
+    "PoolSource",
+    fileNames  = cms.untracked.vstring(inputFiles),
+    duplicateCheckMode = cms.untracked.string('noDuplicateCheck')
+)
+
+
+process.dummy2 = cms.EDAnalyzer("GenXSecAnalyzer")
+
+
+# Path and EndPath definitions
+process.ana = cms.Path(process.dummy2)
+# Schedule definition
+process.schedule = cms.Schedule(process.ana)
+~~~
+{: .language-python}
+
+Run the configuration file with:
 ~~~bash
 dasgoclient -query="file dataset=/TTWJetsToLNu_TuneCP5_13TeV-amcatnloFXFX-madspin-pythia8/RunIISummer20UL18MiniAODv2-106X_upgrade2018_realistic_v16_L1v1-v1/MINIAODSIM | grep file.name" > myfiles.txt
-cmsRun $CDGPATH/gen-cmsdas-2023/configs/xsec_ana.py inputFiles="myfiles.txt" maxEvents=100000
+cmsRun xsec_ana.py inputFiles_load=myfiles.txt maxEvents=100000
 ~~~
 {: .source}
 In this example we restrict the maximum number of events to 100k.
@@ -118,7 +177,7 @@ The `inputFiles` option takes a range of options:
 - A single file in your local area: `inputFiles="file:mylocalfile.root"`
 - A single published file: `inputFiles="/store/mc/..."`
 - Multiple files: `inputFiles="/store/mc/file1,/store/mc/file2"`
-- A text file containing one filepath per line: `inputFiles="myfilelist.txt"`
+- A text file containing one filepath per line: `inputFiles_load="myfilelist.txt"`
 
 Questions:
 - What is the total cross section for your chosen sample? What is the relative uncertainty in this cross section that you obtained?

@@ -10,14 +10,14 @@ latitude: "41.842258"        # decimal latitude of workshop venue (use https://w
 longitude: "-88.245781"       # decimal longitude of the workshop venue (use https://www.latlong.net)
 humandate: "Synchronously January, 2023"    # human-readable dates for the workshop (e.g., "Feb 17-18, 2020")
 humantime: "24/7"    # human-readable times for the workshop (e.g., "9:00 am - 4:30 pm")
-startdate: 2025-01-13 # machine-readable start date for the workshop in YYYY-MM-DD format like 2015-01-01
-enddate: 2025-01-17   # machine-readable end date for the workshop in YYYY-MM-DD format like 2015-01-02
+startdate: 2026-01-12 # machine-readable start date for the workshop in YYYY-MM-DD format like 2015-01-01
+enddate: 2026-01-16   # machine-readable end date for the workshop in YYYY-MM-DD format like 2015-01-02
 email: ["emery.nibigira@cern.ch"]
 ---
 
 <img class="plain"  src="fig/event.png" height=400>
 
-## Welcome to the CMS Data Analysis School 2025 Generators Short Exercise!
+## Welcome to the CMS Data Analysis School 2026 Generators Short Exercise!
 
 This exercise introduces Monte Carlo event generators and how they are used in high energy physics,
 focusing on the workflows used in CMS.
@@ -52,7 +52,7 @@ It has been extended to cover new tools like [NanoGEN](https://twiki.cern.ch/twi
 {: .testimonial}
 
 > ## Mattermost Chat
-> **The [Generators Short Exercise](https://mattermost.web.cern.ch/cmsdaslpc2025/channels/ShortExGenerators) channel will be available once you join the [CMSDAS@LPC2025](https://mattermost.web.cern.ch/cmsdaslpc2025/channels/town-square) team. Direction for how to join this Mattermost chat team can be found on the <a href="setup.html">setup</a> page.**
+> **The [Generators Short Exercise](https://mattermost.web.cern.ch/cmsdaslpc2026/channels/ShortExGenerators) channel will be available once you join the [CMSDAS@LPC2025](https://mattermost.web.cern.ch/cmsdaslpc2026/channels/town-square) team. Direction for how to join this Mattermost chat team can be found on the <a href="setup.html">setup</a> page.**
 {: .discussion}
 
 {% include links.md %}

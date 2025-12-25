@@ -4,7 +4,7 @@ title: Setup
 # Set-up your working environment
 
 > ## Mattermost (chat)
-> There is a dedicated Mattermost team, called [CMSDAS@LPC2025](https://mattermost.web.cern.ch/cmsdaslpc2025/channels/town-square), setup to facilitate communication and discussions via live chat (which is also archived). The channel is hosted by the [CERN Mattermost instance](https://mattermost.web.cern.ch/).
+> There is a dedicated Mattermost team, called [CMSDAS@LPC2026](https://mattermost.web.cern.ch/cmsdaslpc2026/channels/town-square), setup to facilitate communication and discussions via live chat (which is also archived). The channel is hosted by the [CERN Mattermost instance](https://mattermost.web.cern.ch/).
 > 
 > If you have never used Mattermost at CERN, please know that you will need your CERN login credentials (SSO) and you will need to join the CMSDAS@LPC2025 channel in order to be able to see (or find using the search channels functionality) the channels setup for communications related to the school.
 > 

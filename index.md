@@ -36,15 +36,13 @@ It has been extended to cover new tools like [NanoGEN](https://twiki.cern.ch/twi
 
 > ## Facilitators
 > #### Lead Contact
-> * [Emery Nibigira](#facilitators), University of Tennessee ([emery.nibigira@cern.ch](mailto:emery.nibigira@cern.ch))
 > * [Steve Mrenna](#facilitators), FERMILAB ([stephen.mrenna@cern.ch](mailto:stephen.mrenna@cern.ch))
 >  
 > #### All Facilitators
 > <table>
 >   <tr>
->     <td align="center"><a href="https://github.com/enibigir"><img src="https://lpc.fnal.gov//CMSDAS2025/Emery_Nibigira.jpg" width="100px;" alt=""/><br /><sub><b>Emery Nibigira</b></sub></a><br /><a href="https://lpc.fnal.gov/fellows/2025/Emery_Nibigira.shtml" title="More about Emery">🖋</a></td>
 >     <td align="center"><a href="https://github.com/smrenna"><img src="https://lpc.fnal.gov//CMSDAS2024/Stephen_Mrenna.jpg" width="100px;" alt=""/><br /><sub><b>Steve Mrenna</b></sub></a><br /><a href="https://cms.fnal.gov/stephen-mrenna/" title="More about Steve">🖋</a></td>
->     <td align="center"><a href=""><img src="https://lpc.fnal.gov//CMSDAS2025/Roy_Cruz.jpg" width="100px;" alt=""/><br /><sub><b>Roy Cruz</b></sub></a><br /><a href="" title="More about Roy">🖋</a></td>
+>     <td align="center"><a href="https://github.com/hatakeyamak"><img src="https://physics.artsandsciences.baylor.edu/sites/g/files/ecbvkj1946/files/styles/xl/public/2023-09/dr._kenichi_hatakeyama.jpg" width="100px;" alt=""/><br /><sub><b>Kenichi Hatakeyama</b></sub></a><br /><a href="https://sites.baylor.edu/kenichi_hatakeyama/" title="More about Kenichi Hatakeyama">🖋</a></td>
 >     <td align="center"><a href=""><img src="https://lpc.fnal.gov//CMSDAS2025/John_Lawless.jpg" width="100px;" alt=""/><br /><sub><b>Johnny Lawless</b></sub></a><br /><a href="" title="More about Johnny">🖋</a></td>
 >     <td align="center"><a href=""><img src="https://lpc.fnal.gov//CMSDAS2025/Georgios_Krintiras.jpg" width="100px;" alt=""/><br /><sub><b>Georgios Krintiras</b></sub></a><br /><a href="" title="More about Georgios">🖋</a></td>
 >   </tr>

@@ -6,11 +6,11 @@ title: Setup
 > ## Mattermost (chat)
 > There is a dedicated Mattermost team, called [CMSDAS@LPC2026](https://mattermost.web.cern.ch/cmsdaslpc2026/channels/town-square), setup to facilitate communication and discussions via live chat (which is also archived). The channel is hosted by the [CERN Mattermost instance](https://mattermost.web.cern.ch/).
 > 
-> If you have never used Mattermost at CERN, please know that you will need your CERN login credentials (SSO) and you will need to join the CMSDAS@LPC2025 channel in order to be able to see (or find using the search channels functionality) the channels setup for communications related to the school.
+> If you have never used Mattermost at CERN, please know that you will need your CERN login credentials (SSO) and you will need to join the CMSDAS@LPC2026 channel in order to be able to see (or find using the search channels functionality) the channels setup for communications related to the school.
 > 
-> If you already have used Mattermost at CERN, please know that when you click direct links to channels (as you will find below) that are within the CMSDAS@LPC2025 channel, you **may** be redirected to the last Mattermost team you used. If this happens, remember to click the [signup link to join the CMSDAS@LPC2025 channel](https://mattermost.web.cern.ch/login?redirect_to=%2Fcmsdaslpc2025%2Fchannels%2Ftown-square) to switch to the correct team from which you should be able to see the individual channels. If that still doesn’t work, remove all cookies associated with cern.ch and restart your browser.
+> If you already have used Mattermost at CERN, please know that when you click direct links to channels (as you will find below) that are within the CMSDAS@LPC2026 channel, you **may** be redirected to the last Mattermost team you used. If this happens, remember to click the [signup link to join the CMSDAS@LPC2026 channel](https://mattermost.web.cern.ch/login?redirect_to=%2Fcmsdaslpc2026%2Fchannels%2Ftown-square) to switch to the correct team from which you should be able to see the individual channels. If that still doesn’t work, remove all cookies associated with cern.ch and restart your browser.
 > 
-> The [ShortExGenerators](https://mattermost.web.cern.ch/cmsdaslpc2025/channels/ShortExGenerators) will be available once you join or switch to the CMSDAS@LPC2025 channel!
+> The [ShortExGenerators](https://mattermost.web.cern.ch/cmsdaslpc2026/channels/ShortExGenerators) will be available once you join or switch to the CMSDAS@LPC2026 channel!
 > 
 > Note that you can access Mattermost via browser or you can download the corresponding application running standalone on your laptop or smartphone. The laptop application does not work with CERN certificate login.
 {: .prereq}
@@ -31,14 +31,14 @@ cd nobackup
 echo $0
 
 # create your working directory
-mkdir cmsdas_2025_gen
+mkdir cmsdas_2026_gen
 ~~~
 
 <!-- The following commands are tested on the LPC cluster, using the bash shell.
 You can run `echo "$SHELL"` to check that you are indeed running bash.
 Add the following lines to your `~/.bash_profile` file
 ~~~bash
-export CDGPATH=${HOME}/nobackup/cmsdas_2025_gen
+export CDGPATH=${HOME}/nobackup/cmsdas_2026_gen
 source /cvmfs/cms.cern.ch/cmsset_default.sh
 ~~~
 {: .source}
@@ -49,7 +49,7 @@ Run `bash -l` to restart bash, or alternatively `source ~/.bash_profile` to acti
 
 Downloading MadGraph5 v3.5.2 from a CMS mirror.
 ~~~bash
-cd ~/nobackup/cmsdas_2025_gen
+cd ~/nobackup/cmsdas_2026_gen
 wget https://cms-project-generators.web.cern.ch/cms-project-generators/MG5_aMC_v3.5.2.tar.gz
 tar xf MG5_aMC_v3.5.2.tar.gz
 rm MG5_aMC_v3.5.2.tar.gz
@@ -84,7 +84,7 @@ Note: To deactivate the Python 3 virtual environment, type `deactivate`.
 
 Cloning the CMS generator repository:
 ~~~bash
-cd ~/nobackup/cmsdas_2025_gen
+cd ~/nobackup/cmsdas_2026_gen
 git clone -b mg352 https://github.com/cms-sw/genproductions.git genproductions_mg352
 ~~~
 {: .source}
@@ -126,7 +126,7 @@ nn23lo1    = pdlabel     ! PDF set
 
 ## Preparing CMSSW working area
 ~~~bash
-cd ~/nobackup/cmsdas_2025_gen
+cd ~/nobackup/cmsdas_2026_gen
 cmsrel CMSSW_12_4_8
 ~~~
 {: .source}
@@ -136,7 +136,7 @@ We start with pulling and installing the required CMS software (CMSSW).
 We use two versions: the older 10.6.19 is used for sample generation,
 while we will make use of the more up-to-date tools installed in 12.4.7 when we analyze the samples.
 ~~~bash
-cd ~/nobackup/cmsdas_2025_gen
+cd ~/nobackup/cmsdas_2026_gen
 cmsrel CMSSW_12_4_8
 ~~~
 {: .source} -->

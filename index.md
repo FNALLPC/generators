@@ -50,7 +50,7 @@ It has been extended to cover new tools like [NanoGEN](https://twiki.cern.ch/twi
 {: .testimonial}
 
 > ## Mattermost Chat
-> **The [Generators Short Exercise](https://mattermost.web.cern.ch/cmsdaslpc2026/channels/ShortExGenerators) channel will be available once you join the [CMSDAS@LPC2025](https://mattermost.web.cern.ch/cmsdaslpc2026/channels/town-square) team. Direction for how to join this Mattermost chat team can be found on the <a href="setup.html">setup</a> page.**
+> **The [Generators Short Exercise](https://mattermost.web.cern.ch/cmsdaslpc2026/channels/ShortExGenerators) channel will be available once you join the [CMSDAS@LPC2026](https://mattermost.web.cern.ch/cmsdaslpc2026/channels/town-square) team. Direction for how to join this Mattermost chat team can be found on the <a href="setup.html">setup</a> page.**
 {: .discussion}
 
 {% include links.md %}

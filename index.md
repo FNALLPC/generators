@@ -10,14 +10,14 @@ latitude: "41.842258"        # decimal latitude of workshop venue (use https://w
 longitude: "-88.245781"       # decimal longitude of the workshop venue (use https://www.latlong.net)
 humandate: "Synchronously January, 2023"    # human-readable dates for the workshop (e.g., "Feb 17-18, 2020")
 humantime: "24/7"    # human-readable times for the workshop (e.g., "9:00 am - 4:30 pm")
-startdate: 2025-01-13 # machine-readable start date for the workshop in YYYY-MM-DD format like 2015-01-01
-enddate: 2025-01-17   # machine-readable end date for the workshop in YYYY-MM-DD format like 2015-01-02
+startdate: 2026-01-12 # machine-readable start date for the workshop in YYYY-MM-DD format like 2015-01-01
+enddate: 2026-01-16   # machine-readable end date for the workshop in YYYY-MM-DD format like 2015-01-02
 email: ["emery.nibigira@cern.ch"]
 ---
 
 <img class="plain"  src="fig/event.png" height=400>
 
-## Welcome to the CMS Data Analysis School 2025 Generators Short Exercise!
+## Welcome to the CMS Data Analysis School 2026 Generators Short Exercise!
 
 This exercise introduces Monte Carlo event generators and how they are used in high energy physics,
 focusing on the workflows used in CMS.
@@ -36,15 +36,13 @@ It has been extended to cover new tools like [NanoGEN](https://twiki.cern.ch/twi
 
 > ## Facilitators
 > #### Lead Contact
-> * [Emery Nibigira](#facilitators), University of Tennessee ([emery.nibigira@cern.ch](mailto:emery.nibigira@cern.ch))
 > * [Steve Mrenna](#facilitators), FERMILAB ([stephen.mrenna@cern.ch](mailto:stephen.mrenna@cern.ch))
 >  
 > #### All Facilitators
 > <table>
 >   <tr>
->     <td align="center"><a href="https://github.com/enibigir"><img src="https://lpc.fnal.gov//CMSDAS2025/Emery_Nibigira.jpg" width="100px;" alt=""/><br /><sub><b>Emery Nibigira</b></sub></a><br /><a href="https://lpc.fnal.gov/fellows/2025/Emery_Nibigira.shtml" title="More about Emery">🖋</a></td>
 >     <td align="center"><a href="https://github.com/smrenna"><img src="https://lpc.fnal.gov//CMSDAS2024/Stephen_Mrenna.jpg" width="100px;" alt=""/><br /><sub><b>Steve Mrenna</b></sub></a><br /><a href="https://cms.fnal.gov/stephen-mrenna/" title="More about Steve">🖋</a></td>
->     <td align="center"><a href=""><img src="https://lpc.fnal.gov//CMSDAS2025/Roy_Cruz.jpg" width="100px;" alt=""/><br /><sub><b>Roy Cruz</b></sub></a><br /><a href="" title="More about Roy">🖋</a></td>
+>     <td align="center"><a href="https://github.com/hatakeyamak"><img src="https://physics.artsandsciences.baylor.edu/sites/g/files/ecbvkj1946/files/styles/xl/public/2023-09/dr._kenichi_hatakeyama.jpg" width="100px;" alt=""/><br /><sub><b>Kenichi Hatakeyama</b></sub></a><br /><a href="https://sites.baylor.edu/kenichi_hatakeyama/" title="More about Kenichi Hatakeyama">🖋</a></td>
 >     <td align="center"><a href=""><img src="https://lpc.fnal.gov//CMSDAS2025/John_Lawless.jpg" width="100px;" alt=""/><br /><sub><b>Johnny Lawless</b></sub></a><br /><a href="" title="More about Johnny">🖋</a></td>
 >     <td align="center"><a href=""><img src="https://lpc.fnal.gov//CMSDAS2025/Georgios_Krintiras.jpg" width="100px;" alt=""/><br /><sub><b>Georgios Krintiras</b></sub></a><br /><a href="" title="More about Georgios">🖋</a></td>
 >   </tr>
@@ -52,7 +50,7 @@ It has been extended to cover new tools like [NanoGEN](https://twiki.cern.ch/twi
 {: .testimonial}
 
 > ## Mattermost Chat
-> **The [Generators Short Exercise](https://mattermost.web.cern.ch/cmsdaslpc2025/channels/ShortExGenerators) channel will be available once you join the [CMSDAS@LPC2025](https://mattermost.web.cern.ch/cmsdaslpc2025/channels/town-square) team. Direction for how to join this Mattermost chat team can be found on the <a href="setup.html">setup</a> page.**
+> **The [Generators Short Exercise](https://mattermost.web.cern.ch/cmsdaslpc2026/channels/ShortExGenerators) channel will be available once you join the [CMSDAS@LPC2025](https://mattermost.web.cern.ch/cmsdaslpc2026/channels/town-square) team. Direction for how to join this Mattermost chat team can be found on the <a href="setup.html">setup</a> page.**
 {: .discussion}
 
 {% include links.md %}

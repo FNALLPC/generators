@@ -100,7 +100,7 @@ In the following, we will use a CMSSW analyzer called GenXSecAnalyzer to compute
 The analyzer takes a list of EDM files as input (i.e., no NanoAOD or NanoGEN).
 Make sure you are in a CMSSW environment
 ~~~bash
-cd ~/nobackup/cmsdas_2025_gen/CMSSW_12_4_8/src/
+cd ~/nobackup/cmsdas_2026_gen/CMSSW_12_4_8/src/
 cmsenv
 ~~~
 {: .source}

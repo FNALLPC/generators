@@ -20,7 +20,7 @@ The NanoGEN sample we've previously created contains several trees.
 You can open the file in root to explore the content, e.g.
 
 ~~~bash
-cd ~/nobackup/cmsdas_2025_gen/CMSSW_12_4_8/src; cmsenv
+cd ~/nobackup/cmsdas_2026_gen/CMSSW_12_4_8/src; cmsenv
 root -l wplustest.root
 ~~~
 {: .source}
@@ -67,7 +67,7 @@ Why is MadSpin in any case useful?
 The answer lies in NLO calculations in QCD or loop-induced processes.
 Let's launch MadGraph prompt shell again.
 ~~~bash
-cd ~/nobackup/cmsdas_2025_gen/MG5_aMC_v3_5_2/
+cd ~/nobackup/cmsdas_2026_gen/MG5_aMC_v3_5_2/
 ./bin/mg5_aMC
 ~~~
 {: .source}

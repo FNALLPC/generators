@@ -25,7 +25,7 @@ dasgoclient -query="/WJetsToLNu*/RunIISummer20UL18*/MINIAODSIM"
 ~~~
 {: .source}
 > ## Recall
-> Instructions to set up and verify your grid certificate have been covered in [pre-exercises](https://fnallpc.github.io/cms-das-pre-exercises/05-CMSDASPreExercise-RemoteData/index.html).
+> Instructions to set up and verify your grid certificate have been covered in [pre-exercises](https://fnallpc.github.io/cms-das-pre-exercises/06-CMSDASPreExercise-RemoteData/index.html).
 > {: .source}
 {: .callout}
 
@@ -187,7 +187,7 @@ Questions:
 
 ### xsec DB
 
-A central database is kept with approved x-secs for centrally produced samples, [XSDB](https://cms-gen-dev.cern.ch/xsdb/).
+A central database is kept with approved x-secs for centrally produced samples, [XSDB](https://cms-generators.docs.cern.ch/about-cross-sections/xsdb/).
 
 The CMS Generator's group Cross Section Database Tool (XSDB) is a tool for storing and looking up information related to a specific MC sample witihin CMS.
 This tool is designed to complement DAS and MCM, with a direct link from DAS being available to a specific sample.

@@ -18,7 +18,7 @@ keypoints:
 
 # Introduction and first steps
 
-Although quite old, [link](https://arxiv.org/pdf/1304.6677.pdf) is a great reading material to get a general overview of Monte Carlo event generators.
+See this (old, but still useful) review of Monte Carlo event generators for some background:  [link](https://arxiv.org/pdf/1304.6677.pdf).
 Monte Carlo event generators are essential components of almost all experimental analyses and are also widely used by theorists and experiments to make predictions and preparations for future experiments.
 It is one of the topics where we CMS experimentalists and theorists have the closest connections to, theorists give us predictions and experimentalists verify them with the actual data.
 Although Monte Carlo event generators are extremely important tools in HEP, they are often used as black boxes which we more or less treat them as "data".

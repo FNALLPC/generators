@@ -34,7 +34,7 @@ In this exercise, instead of compiling Pythia8 and running it in standalone mode
 Let's first check which release version of Pythia8 we will be using.
 
 ~~~bash
-cd ~/nobackup/cmsdas_2025_gen/CMSSW_12_4_8/src
+cd ~/nobackup/cmsdas_2026_gen/CMSSW_12_4_8/src
 cmsenv
 scram tool info pythia8
 ~~~
@@ -72,7 +72,7 @@ import FWCore.ParameterSet.Config as cms
 import os
 
 externalLHEProducer = cms.EDProducer('ExternalLHEProducer',
-    args = cms.vstring(os.getenv("HOME")+ "/nobackup/cmsdas_2025_gen/genproductions_mg352/bin/MadGraph5_aMCatNLO/wplustest_4f_LO_el8_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz"),
+    args = cms.vstring(os.getenv("HOME")+ "/nobackup/cmsdas_2026_gen/genproductions_mg352/bin/MadGraph5_aMCatNLO/wplustest_4f_LO_el8_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz"),
     nEvents = cms.untracked.uint32(5000),
     numberOfParameters = cms.uint32(1),
     outputFile = cms.string('cmsgrid_final.lhe'),
@@ -140,7 +140,7 @@ LHE files are first produced using the gridpack we've just produced.
    ______________________________________     
          Running Generic Tarball/Gridpack     
    ______________________________________     
-gridpack tarball path = /uscms/home/enibigir/nobackup/cmsdas_2025_gen/genproductions_mg352/bin/MadGraph5_aMCatNLO/wplustest_4f_LO_el8_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz
+gridpack tarball path = /uscms/home/enibigir/nobackup/cmsdas_2026_gen/genproductions_mg352/bin/MadGraph5_aMCatNLO/wplustest_4f_LO_el8_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz
 %MSG-MG5 number of events requested = 100
 %MSG-MG5 random seed used for the run = 234567
 %MSG-MG5 thread count requested = 1

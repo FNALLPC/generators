@@ -54,7 +54,7 @@ First, log in to a new session on the LPC cluster (`ssh -Y <USERNAME>@cmslpc-el8
 Make sure you have completed the <a href="../setup.html">setup</a> steps!
 Then, start the interactive prompt of Madgraph:
 ~~~bash
-cd ~/nobackup/cmsdas_2025_gen/MG5_aMC_v3_5_2/
+cd ~/nobackup/cmsdas_2026_gen/MG5_aMC_v3_5_2/
 ./bin/mg5_aMC
 ~~~
 {: .source}
@@ -425,7 +425,7 @@ We will be generating a gridpack with cards similar to the commands we've used i
 The cards are located in the MG section of the genproductions directory
 
 ~~~bash
-cd ~/nobackup/cmsdas_2025_gen/genproductions_mg352/bin/MadGraph5_aMCatNLO
+cd ~/nobackup/cmsdas_2026_gen/genproductions_mg352/bin/MadGraph5_aMCatNLO
 time ./gridpack_generation.sh wplustest_4f_LO cards/examples/wplustest_4f_LO local
 ~~~
 {: .source}
@@ -457,8 +457,8 @@ This will produce an output LHE file called `cmsgrid_final.lhe`.
 There are multiple ways of analyzing an LHE file, each of which has its own advantages and disadvantages.
 For the purpose of this exercise, we will use a pre-made pyroot script. 
 ~~~bash
-cd ~/nobackup/cmsdas_2025_gen/
-cp /eos/uscms/store/user/cmsdas/2025/short_exercises/generators/LHEReader.py .
+cd ~/nobackup/cmsdas_2026_gen/
+cp /eos/uscms/store/user/cmsdas/2026/short_exercises/generators/LHEReader.py .
 ~~~
 {: .source}
 
@@ -482,19 +482,19 @@ MA is a tool designed to be used by theorists to analyze parton-level LHE files,
 We can install MA directly from the MG5 console.
 
 ~~~bash
-cd ~/nobackup/cmsdas_2025_gen/MG5_aMC_v3_5_2/
+cd ~/nobackup/cmsdas_2026_gen/MG5_aMC_v3_5_2/
 ./bin/mg5_aMC
 ~~~
 {: .source}
 
 You can then install MA from within MG
 ~~~
-install MadAnalysis5 --madanalysis5_tarball=/eos/uscms/store/user/cmsdas/2025/short_exercises/generators/ma5_v1.9.13.tgz
+install MadAnalysis5 --madanalysis5_tarball=/eos/uscms/store/user/cmsdas/2026/short_exercises/generators/ma5_v1.9.13.tgz
 ~~~
 {: .source}
 
 > ## MadAnalysis mirror
-> You might realize that we're installing MA from a local copy (`/eos/uscms/store/user/cmsdas/2025/short_exercises/generators/ma5_v1.9.13.tgz`).
+> You might realize that we're installing MA from a local copy (`/eos/uscms/store/user/cmsdas/2026/short_exercises/generators/ma5_v1.9.13.tgz`).
 > We've experienced some issues with using a [direct download](https://madanalysis.irmp.ucl.ac.be/raw-attachment/wiki/MA5SandBox/ma5_v1.9.13.tgz),
 > therefore, we've prepared the local copy.
 {: .callout}

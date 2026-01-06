@@ -43,9 +43,9 @@ It has been extended to cover new tools like [NanoGEN](https://twiki.cern.ch/twi
 >   <tr>
 >     <td align="center"><a href="https://github.com/smrenna"><img src="https://lpc.fnal.gov/CMSDAS2024/Stephen_Mrenna.jpg" width="100px;" alt=""/><br /><sub><b>Steve Mrenna</b></sub></a><br /><a href="https://cms.fnal.gov/stephen-mrenna/" title="More about Steve">🖋</a></td>
 >     <td align="center"><a href="https://github.com/hatakeyamak"><img src="https://physics.artsandsciences.baylor.edu/sites/g/files/ecbvkj1946/files/styles/xl/public/2023-09/dr._kenichi_hatakeyama.jpg" width="100px;" alt=""/><br /><sub><b>Kenichi Hatakeyama</b></sub></a><br /><a href="https://sites.baylor.edu/kenichi_hatakeyama/" title="More about Kenichi Hatakeyama">🖋</a></td>
->     <td align="center"><a href=""><img src="https://lpc.fnal.gov//CMSDAS2025/John_Lawless.jpg" width="100px;" alt=""/><br /><sub><b>Johnny Lawless</b></sub></a><br /><a href="" title="More about Johnny">🖋</a></td>
->     <td align="center"><a href=""><img src="https://lpc.fnal.gov//CMSDAS2025/Georgios_Krintiras.jpg" width="100px;" alt=""/><br /><sub><b>Georgios Krintiras</b></sub></a><br /><a href="" title="More about Georgios">🖋</a></td>
+>     <td align="center"><a href="https://lpc.fnal.gov/programs/graduate-scholars/2026/Harshul_Gupta.shtml"><img src="https://lpc.fnal.gov/programs/graduate-scholars/2026/Harshul_Gupta.jpg" width="100px;" alt=""/><br /><sub><b>Harshul Gupta</b></sub></a><br /><a href="" title="More about Harshul">🖋</a></td>
 >     <td align="center"><a href="https://github.com/AdamVendrasco"><img src="https://github.com/AdamVendrasco.png" width="100px;" alt=""/><br /><sub><b>Adam Vendrasco</b></sub></a><br /><a href="" title="More about Adam">🖋</a></td>
+>     <td align="center"><a href="https://leejr.web.cern.ch/"><img src="https://leejr.web.cern.ch/images/portrait.jpeg" width="100px;" alt=""/><br /><sub><b>Larry Lee</b></sub></a><br /><a href="" title="More about Larry">🖋</a></td>
 >   </tr>
 > </table>
 {: .testimonial}

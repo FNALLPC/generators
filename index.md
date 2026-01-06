@@ -45,6 +45,7 @@ It has been extended to cover new tools like [NanoGEN](https://twiki.cern.ch/twi
 >     <td align="center"><a href="https://github.com/hatakeyamak"><img src="https://physics.artsandsciences.baylor.edu/sites/g/files/ecbvkj1946/files/styles/xl/public/2023-09/dr._kenichi_hatakeyama.jpg" width="100px;" alt=""/><br /><sub><b>Kenichi Hatakeyama</b></sub></a><br /><a href="https://sites.baylor.edu/kenichi_hatakeyama/" title="More about Kenichi Hatakeyama">🖋</a></td>
 >     <td align="center"><a href=""><img src="https://lpc.fnal.gov//CMSDAS2025/John_Lawless.jpg" width="100px;" alt=""/><br /><sub><b>Johnny Lawless</b></sub></a><br /><a href="" title="More about Johnny">🖋</a></td>
 >     <td align="center"><a href=""><img src="https://lpc.fnal.gov//CMSDAS2025/Georgios_Krintiras.jpg" width="100px;" alt=""/><br /><sub><b>Georgios Krintiras</b></sub></a><br /><a href="" title="More about Georgios">🖋</a></td>
+>     <td align="center"><a href="https://github.com/AdamVendrasco"><img src="https://github.com/AdamVendrasco.png" width="100px;" alt=""/><br /><sub><b>Adam Vendrasco</b></sub></a><br /><a href="" title="More about Adam">🖋</a></td>
 >   </tr>
 > </table>
 {: .testimonial}

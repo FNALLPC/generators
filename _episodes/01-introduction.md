@@ -29,13 +29,14 @@ Samples that are used by CMS experiments go through several steps of simulation 
 2. Detector simulation
 3. Pileup mixing
 4. Trigger emulation
-5. Object econstruction
+5. Object reconstruction
 
 We focus on "1. Monte Carlo event generator" in this tutorial.
 Monte Carlo event generator can be further divided into several subpieces as each steps can be factorized and can be handled through separate calculations :
 1. Parton distribution function (PDF)
 2. Hard scattering (matrix element calculation)
 3. Parton shower & hadronization
+   
 First of all, LHC is a proton-proton collider, hence we need information on how partons (quarks and gluons) are distributed in the proton (PDF).
 Hard scattering is the part where calculations can be treated perturbatively, interactions of incoming partons with the largest momentum transfer (usually the physics process we are interested in).
 Parton shower & hadronization further describes how the particles involed in the hard scattering evolve, working downwards to lower momentum scales even to a point where perturbative calculations break down.

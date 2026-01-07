@@ -8,7 +8,7 @@ questions:
 objectives:
 - "Perform parton shower and hadronization with LHE file as an input"
 - "Perform parton shower and hadronization with gridpack as an input"
-- "Analyze generator level (Monte Carlo "truth") information using NanoGEN files"
+- "Analyze generator level (Monte Carlo truth) information using NanoGEN files"
 keypoints:
 - "Pythia8 is the main tool used for parton showering and hadronization in CMS"
 - "Events are not physical if it did not go through parton shower and hadronization models"

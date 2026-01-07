@@ -44,9 +44,10 @@ Parton shower & hadronization further describes how the particles involved in th
 ## Using Standalone Madgraph
 
 In the first part of the exercise, we will use the matrix element generator MadGraph5 _aMC@NLO, or in short MadGraph [link](https://launchpad.net/mg5amcnlo).
+Note that MadGraph is a "matrix element" generator, and not an event generator.   MadGraph can calculate the hard scattering (large momentum transfer) partonic process at the core of an event, but, as noted above, this is only part of the story.
 MadGraph can perform the calculations for many different physics processes (both SM and BSM) at leading and next-to-leading order (LO & NLO) in QCD.
-Because of its easy user interface and flexibility with UFO models, you can test wide variety of physics modeling.
-We will now first see how MadGraph runs interactively in standalone mode using simple `W+` (wplus) process as an example.
+Because of its easy user interface and flexibility with UFO models (that let you define the theory you are interested in), you can test a wide variety of physics hypotheses.
+We will first see how MadGraph runs interactively in standalone mode using simple `W+` (wplus) process as an example.
 
 We will first use the interactive prompt of MadGraph to generate proton proton collision events that produce W bosons.
 First, log in to a new session on the LPC cluster (`ssh -Y <USERNAME>@cmslpc-el8.fnal.gov`).

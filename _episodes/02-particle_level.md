@@ -1,17 +1,17 @@
 ---
-title: "2 - Parton Shower Generator"
+title: "Parton Shower and Hadronization Models"
 teaching: 10
 exercises: 20
 questions:
-- "Why do we need to do parton showering?"
+- "Why do we need parton shower and hadronization?"
 - "How are simulated samples created in CMS?"
 objectives:
-- "Perform parton shower with LHE file as an input"
-- "Perform parton shower with gridpack as an input"
-- "Analyze generator level information using NanoGEN files"
+- "Perform parton shower and hadronization with LHE file as an input"
+- "Perform parton shower and hadronization with gridpack as an input"
+- "Analyze generator level (Monte Carlo "truth") information using NanoGEN files"
 keypoints:
-- "Pythia8 is the main tool used for parton showering in CMS"
-- "Events are not physical if it did not go through parton shower"
+- "Pythia8 is the main tool used for parton showering and hadronization in CMS"
+- "Events are not physical if it did not go through parton shower and hadronization models"
 - "Jet merging is a technique to avoid double countings of jet phase spaces in ME and PS calculations"
 ---
 

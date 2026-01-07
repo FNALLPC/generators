@@ -18,10 +18,13 @@ keypoints:
 # Creating particle level samples from LHE files
 
 As discussed earlier, LHE files itself are not enough to describe physical distributions.
-In order to generate physics-wise sensible events, LHE files need to go through the parton shower.
-Parton shower, in principle, is responsible for higher order corrections to the hard process.
-Dominant contributions of such correction happen with collinear or soft emissions.
-In CMS, one of the most widely used tool for parton shower is Pythia8 (however, do note that Pythia8 is a multipurpose generator that is able to calculate hard process for certain physics processes).
+In order to generate physics-wise sensible events, LHE files need to go through the parton shower and hadronization steps.
+The parton shower, in principle, is responsible for including higher order corrections to the hard process.
+The dominant corrections arise from collinear and/or soft gluon emissions, which lead to a large probability for many such
+soft and collinear gluons to be added to the hard process.
+A hadronization model is needed to transform the quarks and gluons produced from the hard process and the parton shower into the
+physical (colorless) particles observed in Nature.
+In CMS, one of the most widely used tools for the parton shower and hadronization is Pythia8 (however, do note that Pythia8 is a multipurpose generator that is able to calculate hard process for certain physics processes).
 In this exercise, instead of compiling Pythia8 and running it in standalone mode as we did for MadGraph, we will take Pythia8 that is already compiled under CMSSW environment.
 
 ## (1) Running Pythia8 interface in CMSSW

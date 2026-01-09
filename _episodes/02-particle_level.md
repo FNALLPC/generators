@@ -283,16 +283,29 @@ After filter: final equivalent lumi for 1M events (1/fb) = 3.249e-02 +- 2.478e-0
 {: .challenge}
 
 
-## (2) Jet merging samples
+## (2) Jet merging samples and qCut
 
 Hard process calculation has advantage in modeling of hard jets and heavy particle decays while parton shower is great for describing collinear and soft emissions.
 For more realistic and reliable physics modeling of hard jets, for example in W+jet events, MadGraph can be used as below.
 
-~~~
-generate p p > w+, w+ > ell+ vl @0
-add process p p > w+ j, w+ > ell+ vl @1
-~~~
-{: .code}
+An intrinsic issue with generating the matrix element with extra partons is double counting.
+Naively speaking, P8 will still "attach" additional radiation to all events coming out of MG, whether they have additional partons or not.
+Therefore, events that have no additional partons in MG will end up having one or two or many jets after showering by P8.
+At the same time, we will also get 1-jet events from MG events with one additional parton.
+To remove this overlap and define more clearly the "division of labor" between the matrix element and parton shower, a matching procedure is used.
+We will be using the so called MLM matching scheme, which uses a freely-chosen scale QCUT as the boundary between ME and PS.
+After showering, jet clustering is performed and it is checked whether all jets with kT > QCUT are matched to a ME-level parton.
+If not, the event is rejected.
+
+In this exercise, we will see how to set up this method technically and validate the outcome.
+
+We have prepared an MG5 gridpack for a W+jet process, which you can find at this location:
+`/eos/uscms/store/user/cmsdas/2026/short_exercises/Generators/WJetsToLNu_HT-0toInf_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz`
+
+You can look at the `proc_card.dat` and `run_card.dat` either by unpacking the gridpack, or by opening it directly with e.g. `vim /eos/uscms/store/user/cmsdas/2026/short_exercises/Generators/WJetsToLNu_HT-0toInf_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz` (for non-vim users: \<ESC\>, `: q` to close).
+
+Compare the input cards to the ones we used before.
+What is different, what stayed the same? What can you learn from the log file?
 
 With such syntaxes, MadGraph produces W+jet process with 0 and 1 hard jet in the event.
 If this sample goes through parton shower, as some portion of events (dentoed with `@1`) readily involves hard jet, it would be better at describing W+jet process with hard jet.
@@ -306,60 +319,70 @@ Very roughly, jet merging scale can be thought as the momentum of a jet.
 If a jet in the event is hard enough above the threshold, events from `@0` are rejected while only accepting from `@1`.
 On the other hand, if a jet in the event is not too hard below the threshold, events from `@0` are only accepted while rejecting `@1`.
 
-> ## How to produce gridpack
-> 
-> How to set the Madgraph (`run card`) and Pythia (`fragment`)?
-> > ## Hint
-> >
-> > ~~~
-> > #*********************************************************************
-> > # Matching - Warning! ickkw > 1 is still beta
-> > #*********************************************************************
-> >  0        = ickkw            ! 0 no matching, 1 MLM, 2 CKKW matching
-> > ~~~
-> > {: .code}
-> > This flag tells MadGraph that the LHE files we are going to produce will later be going through jet merging in > > order to avoid double countings.
-> > 
-> > ~~~
-> > #*********************************************************************
-> > # Jet measure cuts                                                   *
-> > #*********************************************************************
-> >  0   = xqcut   ! minimum kt jet measure between partons
-> > ~~~
-> > {: .code}
-> > When jet merging is turned on, `xqcut` needs to be set which presample the events for efficient jet merging.
-> > Remember that some portion of events will be later discarded and never going to be used.
-> > So there is no point of producing events that involve jets with too low energy scale at this LHE level since these will likely be removed.
-> > 
-> > ~~~python
-> > generator = cms.EDFilter("Pythia8HadronizerFilter",
-> >     PythiaParameters = cms.PSet(
-> >         pythia8CommonSettingsBlock,
-> >         pythia8CP5SettingsBlock,
-> >         processParameters = cms.vstring(
-> >             'JetMatching:setMad = off',
-> >             'JetMatching:scheme = 1',
-> >             'JetMatching:merge = on',
-> >             'JetMatching:jetAlgorithm = 2',
-> >             'JetMatching:etaJetMax = 5.',
-> >             'JetMatching:coneRadius = 1.',
-> >             'JetMatching:slowJetPower = 1',
-> >             'JetMatching:doShowerKt = off', 
-> >             'JetMatching:qCut = 19.',
-> >             'JetMatching:nQmatch = 4',
-> >             'JetMatching:nJetMax = 1',
-> >             'TimeShower:mMaxGamma = 4.0'
-> >         ),
-> >         parameterSets = cms.vstring(
-> >             'pythia8CommonSettings',
-> >             'pythia8CP5Settings',
-> >             'processParameters',
-> >         )
-> >     ),
-> > ~~~
-> > {: .code}
-> {: .solution}
-{: .challenge}
 
-> ## Bonus: What is the cross section?
-{: .challenge}
+
+How many subprocesses are produced?
+What is the cross section?
+How does all of this compare to the previous case?
+Let's generate some events.
+Again, we are going to use cmsDriver, but now with a different fragment.
+Compare the fragment to the earlier one to see what is different now.
+Before running it, make sure that it has the correct gridpack path in it.
+
+~~~bash
+cp ${CDGPATH}/gen-cmsdas-2023/fragments/Hadronizer_TuneCP5_13TeV_MLM_5f_max2j_qCut10_LHE_pythia8_cff.py ${CONFIG_PATH}/
+cd ${CDGPATH}/CMSSW_10_6_19/src/
+cmsenv
+scram b
+
+cmsDriver.py Configuration/GenProduction/python/Hadronizer_TuneCP5_13TeV_MLM_5f_max2j_qCut10_LHE_pythia8_cff.py \
+    --mc \
+    --eventcontent RAWSIM,LHE \
+    --datatier GEN,LHE \
+    --conditions 106X_mc2017_realistic_v6 \
+    --beamspot Realistic25ns13TeVEarly2017Collision \
+    --step LHE,GEN \
+    --nThreads 1 \
+    --geometry DB:Extended \
+    --era Run2_2017 \
+    --customise Configuration/DataProcessing/Utils.addMonitoring \
+    --fileout file:w2jets_qcut10.root \
+    -n 1000
+~~~
+{: .source}
+
+~~~
+generate p p > w+, w+ > ell+ vl @0
+add process p p > w+ j, w+ > ell+ vl @1
+~~~
+{: .code}
+
+At the end of the run, CMSSW automatically runs the GenXSecAnalyzer, which is a simple tool to calculate the sample cross-section, check the distribution of weights and give other useful insights.
+In the case of jet matching, it also gives the matching efficiencies.
+What are the matching efficiencies for each subprocess?
+How does the cross-section after matching compare to the cross-section before matching?
+
+If you want to generate matched samples, it is important to check that the matching performs well.
+Since we have artificially split the physical process into energy regimes above and below QCUT, we need to make sure that the transition between the two regimes is smooth.
+Optimally, it should be impossible to tell from the matched sample what value of QCUT we used.
+To test this, we consider the distribution of the differential jet rates (DJRs).
+The DJRs correspond to the kt separation of the final clustering step for a given jet multiplicity.
+E.g. if we keep clustering an event until it has exaclty 2 jets left, and these 2 jets have a kt separation of 20 GeV, then DJR(1->2) = 20 GeV.
+It is called "1->2" because as we decrease the cutoff scale from >20 GeV to <20 GeV, the event turns from a 1-jet into a 2-jet event.
+In the genproductions repository, there is a macro that plots these quantities for a given EDM file:
+
+~~~bash
+root -l -b -q ${CDGPATH}/genproductions_mg265/bin/MadGraph5_aMCatNLO/macros/plotdjr.C\(\"w2jets_qcut10.root\",\"djr_qcut10.pdf\"\)
+~~~
+{:. source}
+
+Look at the resulting PDF file and check out the distributions.
+The contributions with different numbers of matrix element partons should sum up to give a smooth distribution.
+To save on computing time in this exercise, we have pre-generated samples with different values of QCUT.
+They are stored in the uscms eos area:
+
+`/eos/uscms/store/user/cmsdas/2026/short_exercises/Generators/wjets_2j/`
+
+What do the DJR distributions look like for the different values of QCUT?
+Which one would you choose?
+

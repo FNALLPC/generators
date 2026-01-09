@@ -459,7 +459,7 @@ There are multiple ways of analyzing an LHE file, each of which has its own adva
 For the purpose of this exercise, we will use a pre-made pyroot script. 
 ~~~bash
 cd ~/nobackup/cmsdas_2026_gen/
-cp /eos/uscms/store/user/cmsdas/2026/short_exercises/Generators/LHEReader.py .
+xrdcp root://cmseos.fnal.gov//store/user/cmsdas/2026/short_exercises/Generators/LHEReader.py .
 ~~~
 {: .source}
 

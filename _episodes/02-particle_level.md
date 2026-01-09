@@ -301,11 +301,11 @@ If not, the event is rejected.
 
 In this exercise, we will see how to set up this method technically and validate the outcome.
 
-We have prepared an MG5 gridpack for a W+jet process, which you can find at this location:
-`/eos/uscms/store/user/cmsdas/2026/short_exercises/Generators/WJetsToLNu_HT-0toInf_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz`
+We have prepared an MG5 gridpack for a W+jet process, which you can download with:
+`xrdcp root://cmseos.fnal.gov//store/user/cmsdas/2026/short_exercises/Generators/WJetsToLNu_HT-0toInf_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz .`
 
 If you are curious, you
-can look at the `proc_card.dat` and `run_card.dat` either by unpacking the gridpack, or by opening it directly with e.g. `vim /eos/uscms/store/user/cmsdas/2026/short_exercises/Generators/WJetsToLNu_HT-0toInf_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz` (for non-vim users: \<ESC\>, `: q` to close).
+can look at the `proc_card.dat` and `run_card.dat` either by unpacking the gridpack, or by opening it directly with e.g. `vim WJetsToLNu_HT-0toInf_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz` (for non-vim users: \<ESC\>, `: q` to close).
 
 However, we replicate the relevant information here for the "proc" card:
 ~~~
@@ -374,15 +374,15 @@ Before running it, make sure that it has the correct gridpack path in it.
 
 Define a path variable to reduce our typing of long names:
 ~~~bash
-export CDGPATH=/eos/uscms/store/user/cmsdas/2026/short_exercises/Generators
+export CDGPATH=root://cmseos.fnal.gov//store/user/cmsdas/2026/short_exercises/Generators/
 export CONFIG_PATH=Configuration/GenProduction/python
 ~~~
 Then, move to your local distribution of CMSSW (CMSSW_12_4_8) if you are
 not already there:
 
 ~~~bash
-cd CMSSW_12_4_8/src/
-cp ${CDGPATH}/fragments/Hadronizer_TuneCP5_13TeV_MLM_5f_max2j_qCut10_LHE_pythia8_cff.py ${CONFIG_PATH}/
+cd ~/nobackup/cmsdas_2026_gen/CMSSW_12_4_8/src
+xrdcp ${CDGPATH}/fragments/Hadronizer_TuneCP5_13TeV_MLM_5f_max2j_qCut10_LHE_pythia8_cff.py ${CONFIG_PATH}/
 cmsenv
 scram b
 
@@ -421,7 +421,7 @@ It is called "1->2" because as we decrease the cutoff scale from >20 GeV to <20 
 In the genproductions repository, there is a macro that plots these quantities for a given EDM file:
 
 ~~~bash
-root -l -b -q ${CDGPATH}/genproductions_mg265/bin/MadGraph5_aMCatNLO/macros/plotdjr.C\(\"w2jets_qcut10.root\",\"djr_qcut10.pdf\"\)
+root -l -b -q ~/nobackup/cmsdas_2026_gen/genproductions_mg352/bin/MadGraph5_aMCatNLO/macros/plotdjr.C\(\"w2jets_qcut10.root\",\"djr_qcut10.pdf\"\)
 ~~~
 {:. source}
 

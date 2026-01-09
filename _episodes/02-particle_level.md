@@ -372,9 +372,15 @@ Again, we are going to use cmsDriver, but now with a different fragment.
 Compare the fragment to the earlier one to see what is different now.
 Before running it, make sure that it has the correct gridpack path in it.
 
+Define a path variable to reduce our typing of long names:
 ~~~bash
-cp ${CDGPATH}/gen-cmsdas-2023/fragments/Hadronizer_TuneCP5_13TeV_MLM_5f_max2j_qCut10_LHE_pythia8_cff.py ${CONFIG_PATH}/
-cd ${CDGPATH}/CMSSW_12_4_8/src/
+export CDGPATH=/eos/uscms/store/user/cmsdas/2026/short_exercises/Generators
+~~~
+Then, move to your local distribution of CMSSW (CMSSW_12_4_8):
+
+~~~bash
+cd CMSSW_12_4_8/src/
+cp ${CDGPATH}/fragments/Hadronizer_TuneCP5_13TeV_MLM_5f_max2j_qCut10_LHE_pythia8_cff.py ${CONFIG_PATH}/
 cmsenv
 scram b
 
@@ -394,18 +400,16 @@ cmsDriver.py Configuration/GenProduction/python/Hadronizer_TuneCP5_13TeV_MLM_5f_
 ~~~
 {: .source}
 
-~~~
-generate p p > w+, w+ > ell+ vl @0
-add process p p > w+ j, w+ > ell+ vl @1
-~~~
-{: .code}
+Sit back and relax (and maybe get some coffee).   You can watch what happens at the screen
+for some entertainment.
 
 At the end of the run, CMSSW automatically runs the GenXSecAnalyzer, which is a simple tool to calculate the sample cross-section, check the distribution of weights and give other useful insights.
 In the case of jet matching, it also gives the matching efficiencies.
 What are the matching efficiencies for each subprocess?
 How does the cross-section after matching compare to the cross-section before matching?
 
-If you want to generate matched samples, it is important to check that the matching performs well.
+If you want to generate matched samples, it is important to check that the matching is working
+as expected.
 Since we have artificially split the physical process into energy regimes above and below QCUT, we need to make sure that the transition between the two regimes is smooth.
 Optimally, it should be impossible to tell from the matched sample what value of QCUT we used.
 To test this, we consider the distribution of the differential jet rates (DJRs).
@@ -419,6 +423,11 @@ root -l -b -q ${CDGPATH}/genproductions_mg265/bin/MadGraph5_aMCatNLO/macros/plot
 ~~~
 {:. source}
 
+~~~
+Note, unfortunately, there is no easy way to view pdf files from the CMS nodes.
+Instead, you need to copy these locally to view them.
+~~~
+
 Look at the resulting PDF file and check out the distributions.
 The contributions with different numbers of matrix element partons should sum up to give a smooth distribution.
 To save on computing time in this exercise, we have pre-generated samples with different values of QCUT.
@@ -428,4 +437,3 @@ They are stored in the uscms eos area:
 
 What do the DJR distributions look like for the different values of QCUT?
 Which one would you choose?
-

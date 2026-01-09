@@ -304,24 +304,65 @@ In this exercise, we will see how to set up this method technically and validate
 We have prepared an MG5 gridpack for a W+jet process, which you can find at this location:
 `/eos/uscms/store/user/cmsdas/2026/short_exercises/Generators/WJetsToLNu_HT-0toInf_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz`
 
-You can look at the `proc_card.dat` and `run_card.dat` either by unpacking the gridpack, or by opening it directly with e.g. `vim /eos/uscms/store/user/cmsdas/2026/short_exercises/Generators/WJetsToLNu_HT-0toInf_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz` (for non-vim users: \<ESC\>, `: q` to close).
+If you are curious, you
+can look at the `proc_card.dat` and `run_card.dat` either by unpacking the gridpack, or by opening it directly with e.g. `vim /eos/uscms/store/user/cmsdas/2026/short_exercises/Generators/WJetsToLNu_HT-0toInf_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz` (for non-vim users: \<ESC\>, `: q` to close).
+
+However, we replicate the relevant information here for the "proc" card:
+~~~
+import model sm-ckm_no_b_mass
+
+define ell = e+ e- mu+ mu- ta+ ta-
+define vl  = ve ve~ vm vm~ vt vt~
+
+generate p p > ell vl $$ t t~ h @0
+add process p p > ell vl j $$ t t~ h @1
+add process p p > ell vl j j $$ t t~ h @2
+
+output WJetsToLNu_HT-0toInf -nojpeg
+~~~
 
 Compare the input cards to the ones we used before.
 What is different, what stayed the same? What can you learn from the log file?
 
 Madgraph has the ability to generate events with different numbers of hard partons.   
 Each of these processes is given a tag: `@N`, where N is some integer.
-For example, MadGraph can model the W+jet process with 0 or 1 hard jet in the event.
-If this sample goes through parton shower, some portion of events (denoted with `@1`) already involve one hard jet, and would better describe the W+jet process with one hard jet.
-However consider the event `@0` emitting QCD particles from initial state radiation that could possibly form a jet that is hard enough.
-Such phase space inherently possesses a problem of double counting as "W+jet with hard jet" event could come from both `@0` and `@1`.
-To mitigate such issues and remove double counting of phase space contributions, jet merging technique is used.
-Jet merging is set up with an artificial cut threshold called jet merging scale.
-This scale decides whether an event will be accepted or not from both `@0` and `@1`.
-Finally, only accepted events from the two processes will be merged and form one sample.
-Very roughly, jet merging scale can be thought as the momentum of a jet.
-If a jet in the event is hard enough above the threshold, events from `@0` are rejected while only accepting from `@1`.
-On the other hand, if a jet in the event is not too hard below the threshold, events from `@0` are only accepted while rejecting `@1`.
+In this example, Madgraph is including up to TWO hard jets (using the tags `@0`, `@1`, and `@2`).
+
+Here, a hard jet is defined in the "run" card, replicated here (note, only
+the parts relevant to jet merging/matching is included):
+~~~
+#*********************************************************************
+# Matching - Warning! ickkw > 1 is still beta
+#*********************************************************************
+ 1        = ickkw            ! 0 no matching, 1 MLM, 2 CKKW matching
+ 1        = highestmult      ! for ickkw=2, highest mult group
+ 1        = ktscheme         ! for ickkw=1, 1 Durham kT, 2 Pythia pTE
+ 1        = alpsfact         ! scale factor for QCD emission vx
+ F        = chcluster        ! cluster only according to channel diag
+ F        = pdfwgt           ! for ickkw=1, perform pdf reweighting
+ 5        = asrwgtflavor     ! highest quark flavor for a_s reweight
+ T        = clusinfo         ! include clustering tag in output
+ 3.0      = lhe_version       ! Change the way clustering information pass to shower.
+#*********************************************************************
+# Jet measure cuts                                                   *
+#*********************************************************************
+ 10   = xqcut   ! minimum kt jet measure between partons
+~~~
+
+"xqcut" is the jet measure, roughly the "pT" of partonic jets.
+With this choice of 10 (GeV), the MadGraph partonic predictions will include a mixture of:
+1) W + no extra partons
+2) W + exactly one parton with pT > 10 GeV
+3) W + exactly two partons with pT > 10 GeV and interjet distance > 10 GeV.
+
+The job of Pythia is to fill in the soft/collinear partons with pT < 10 GeV, etc.
+By default, Pythia _will_ produce hard partons in the parton shower, but with an unreliable
+rate (how often they occur) and unreliable kinematics (non-soft/non-collinear partons produced
+with a soft/collinear approximation).
+The "art" is to do this in such a way as to subtract out the hard Pythia partons will keeping
+the soft/collinear ones.
+A subtlety is that the pT measure of MadGraph != pT measure of Pythia, so this is not an exact
+procedure (at least in the standard merging methods used in CMS).
 
 How many subprocesses are produced?
 What is the cross section?
@@ -333,7 +374,7 @@ Before running it, make sure that it has the correct gridpack path in it.
 
 ~~~bash
 cp ${CDGPATH}/gen-cmsdas-2023/fragments/Hadronizer_TuneCP5_13TeV_MLM_5f_max2j_qCut10_LHE_pythia8_cff.py ${CONFIG_PATH}/
-cd ${CDGPATH}/CMSSW_10_6_19/src/
+cd ${CDGPATH}/CMSSW_12_4_8/src/
 cmsenv
 scram b
 

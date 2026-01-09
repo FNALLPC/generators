@@ -81,7 +81,7 @@ generate p p > t t~ [QCD]
 It would be not so difficult to realize `[QCD]` has been added in the process definition.
 This is a flag which tells MadGraph that you wish to do the calculations at NLO in QCD.
 
-Before going further, try concatenating top decays into a W boson and a b quark similar to what we did for `Z -> ee` example.
+Before going further, try concatenating top decays into a W boson and a b quark similar to what we did for `W -> lv` example.
 ~~~
 generate p p > t t~, t > w+ b [QCD]
 generate p p > t t~ [QCD], t > w+ b
@@ -108,6 +108,7 @@ shower = PYTHIA8
 Two lines are noticeably added, `shower = PYTHIA8` and `4` (which can be replaced with `madspin = ON`).
 We are again not going to do the parton shower here.
 This is because depending on which parton shower generator one chooses later, "counter term" calculation differs which accounts as negatively weighted events.
+Press `tab` to turn off timer.
 
 > ## Negative weighted events
 > We won't cover what it is in the tutorial but important things to remember are that
@@ -115,7 +116,6 @@ This is because depending on which parton shower generator one chooses later, "c
 > 2. LHE files at NLO are even more unphysical than LHE files at LO before parton shower.
 {: .challenge}
 
-Press `tab` to turn off timer.
 MadGraph again asks if you would like to edit the cards now including `madspin_card.dat`.
 ~~~
 /------------------------------------------------------------\
@@ -151,8 +151,8 @@ decay t~ > w- b~, w- > mu- vm~
 ~~~
 {: .output}
 
-This forces top to decay into positron and antitop to decay into muon.
-Remove unnecessary decay definitions and add these two lines to make a top pair sample that ends up giving you positron and a muon.
+This forces the top to decay to a positron (+v) and the antitop to decay to a muon (+v).
+Remove the unnecessary decay definitions that are in there and replace them with these two lines to make a top pair sample that ends up giving you positron and a muon.
 Before moving on, do `set run_card nevents 50` to save time, producing only 50 events.
 
 You will see inclusive top pair production cross section being computed which includes all possible decays for the top quark.

@@ -285,10 +285,12 @@ After filter: final equivalent lumi for 1M events (1/fb) = 3.249e-02 +- 2.478e-0
 
 ## (2) Jet merging samples and qCut
 
-Hard process calculation has advantage in modeling of hard jets and heavy particle decays while parton shower is great for describing collinear and soft emissions.
-For more realistic and reliable physics modeling of hard jets, for example in W+jet events, MadGraph can be used as below.
+The hard process calculation done with Madgraph models well hard jet production and heavy particle decays.
+The parton shower is great for describing collinear and soft emissions.
+We would like our theory predictions to include both:  the improved description of hard jet production and
+the soft/collinear emissions that model jet substructure.
 
-An intrinsic issue with generating the matrix element with extra partons is double counting.
+One issue that arises immediately is that of double-counting.  
 Naively speaking, P8 will still "attach" additional radiation to all events coming out of MG, whether they have additional partons or not.
 Therefore, events that have no additional partons in MG will end up having one or two or many jets after showering by P8.
 At the same time, we will also get 1-jet events from MG events with one additional parton.
@@ -307,8 +309,10 @@ You can look at the `proc_card.dat` and `run_card.dat` either by unpacking the g
 Compare the input cards to the ones we used before.
 What is different, what stayed the same? What can you learn from the log file?
 
-With such syntaxes, MadGraph produces W+jet process with 0 and 1 hard jet in the event.
-If this sample goes through parton shower, as some portion of events (dentoed with `@1`) readily involves hard jet, it would be better at describing W+jet process with hard jet.
+Madgraph has the ability to generate events with different numbers of hard partons.   
+Each of these processes is given a tag: `@N`, where N is some integer.
+For example, MadGraph can model the W+jet process with 0 or 1 hard jet in the event.
+If this sample goes through parton shower, some portion of events (denoted with `@1`) already involve one hard jet, and would better describe the W+jet process with one hard jet.
 However consider the event `@0` emitting QCD particles from initial state radiation that could possibly form a jet that is hard enough.
 Such phase space inherently possesses a problem of double counting as "W+jet with hard jet" event could come from both `@0` and `@1`.
 To mitigate such issues and remove double counting of phase space contributions, jet merging technique is used.
@@ -318,8 +322,6 @@ Finally, only accepted events from the two processes will be merged and form one
 Very roughly, jet merging scale can be thought as the momentum of a jet.
 If a jet in the event is hard enough above the threshold, events from `@0` are rejected while only accepting from `@1`.
 On the other hand, if a jet in the event is not too hard below the threshold, events from `@0` are only accepted while rejecting `@1`.
-
-
 
 How many subprocesses are produced?
 What is the cross section?

@@ -375,8 +375,10 @@ Before running it, make sure that it has the correct gridpack path in it.
 Define a path variable to reduce our typing of long names:
 ~~~bash
 export CDGPATH=/eos/uscms/store/user/cmsdas/2026/short_exercises/Generators
+export CONFIG_PATH=Configuration/GenProduction/python
 ~~~
-Then, move to your local distribution of CMSSW (CMSSW_12_4_8):
+Then, move to your local distribution of CMSSW (CMSSW_12_4_8) if you are
+not already there:
 
 ~~~bash
 cd CMSSW_12_4_8/src/
@@ -414,7 +416,7 @@ Since we have artificially split the physical process into energy regimes above 
 Optimally, it should be impossible to tell from the matched sample what value of QCUT we used.
 To test this, we consider the distribution of the differential jet rates (DJRs).
 The DJRs correspond to the kt separation of the final clustering step for a given jet multiplicity.
-E.g. if we keep clustering an event until it has exaclty 2 jets left, and these 2 jets have a kt separation of 20 GeV, then DJR(1->2) = 20 GeV.
+E.g. if we keep clustering an event until it has exactly 2 jets left, and these 2 jets have a kt separation of 20 GeV, then DJR(1->2) = 20 GeV.
 It is called "1->2" because as we decrease the cutoff scale from >20 GeV to <20 GeV, the event turns from a 1-jet into a 2-jet event.
 In the genproductions repository, there is a macro that plots these quantities for a given EDM file:
 
@@ -437,3 +439,12 @@ They are stored in the uscms eos area:
 
 What do the DJR distributions look like for the different values of QCUT?
 Which one would you choose?
+
+The initial, naive guess of 10 GeV was actually a fairly poor one.
+One indication of this is that the final, total "matched" W+X jet cross section was substantially
+smaller than the W+0 parton cross section.
+
+This is strange, because, because high-order corrections tend to _increase_ a cross section,
+not decrease them.   In the final analysis, a cut of around 20 GeV gave reasonably smooth
+distributions for dR _and_ a reasonable final cross section.
+

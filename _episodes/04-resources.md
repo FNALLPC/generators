@@ -1,5 +1,5 @@
 ---
-title: "4 - CMS resources for samples and generators"
+title: "CMS resources for samples and generators"
 teaching: 5
 exercises: 10
 questions:

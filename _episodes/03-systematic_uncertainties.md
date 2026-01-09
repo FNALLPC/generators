@@ -1,5 +1,5 @@
 ---
-title: "3 - Analysis and systematic uncertainties"
+title: "Analysis and systematic uncertainties"
 teaching: 10
 exercises: 20
 questions:
@@ -15,7 +15,7 @@ keypoints:
 
 # Analysis of NanoGEN
 
-In the following we will explore a bit the content of NanoGEN samples, and how they can be used for doing first studies for a potentially interesting physics analysis.
+In the following, we will explore a bit the content of NanoGEN samples, and how they can be used for doing first studies for a potentially interesting physics analysis.
 The NanoGEN sample we've previously created contains several trees.
 You can open the file in root to explore the content, e.g.
 
@@ -52,7 +52,7 @@ Indices 1-100 are different, linear independent PDF sets that can be used to est
 > ## Hessian and MC replicas
 > Two different approaches for PDF sets exist: MC replicas and hessian eigenvectors.
 > While the hessian sets used in CMS in (most) UL samples allows for estimation of the total uncertainty by using the squared sum of the individual variations,
-> the situation is more ambigous for MC replicas.
+> the situation is more ambiguous for MC replicas.
 {: .callout}
 
 Similar sets of variations are available for the renormalization and factorization scales, `LHEScaleWeight`.
@@ -105,7 +105,7 @@ shower = PYTHIA8
 ~~~
 {: .output}
 
-Two lines are noticably added, `shower = PYTHIA8` and `4` (which can be replaced with `madspin = ON`).
+Two lines are noticeably added, `shower = PYTHIA8` and `4` (which can be replaced with `madspin = ON`).
 We are again not going to do the parton shower here.
 This is because depending on which parton shower generator one chooses later, "counter term" calculation differs which accounts as negatively weighted events.
 
@@ -248,8 +248,27 @@ INFO: Event 46/75 :  6.5s
 
 # Interfacing BSM UFO model files
 
-Let's take a look at how BSM samples for search type of analyses gets produced.
-We will pick one simple example, a hypothetical heavy gauge boson that is called W' particle.
+As noted earlier, 
+event generators, like Pythia, also include their own implementations of some basic 
+Standard Model processes.   For some cases, these are adequate for estimating backgrounds,
+but, in other cases, they fail miserably.   For example, it is a fool's errand to estimate
+the background to
+top quark pair production using Pythia's implementation of W production + parton showering.
+
+Event generators also include their own BSM (Beyond the Standard Model) processes.   In fact,
+some of these are hard to produce any other way, particularly if the new physics influences
+the parton shower or hadronization.   On the other hand, there are times when either: 1) a new
+physics model is not in the event generators or 2) you need to do jet merging in a BSM scenario.
+An example of 2) is a compressed SUSY scenario, where one is relying on the kinematics of hard QCD
+partons to produce missing ET.
+
+For these cases, one would want to use the correct BSM Lagrangian and calculate Feynman diagrams
+for the processes of interest, and then interface with Pythia.
+The UFO format is a community standard for implementing new Lagrangians.
+
+Let's take a look at how BSM samples can be produced.
+We will pick one simple example, a hypothetical heavy gauge boson that is called W' particle
+(so simple that Pythia can do this already).
 
 ~~~
 import model WEff_UFO

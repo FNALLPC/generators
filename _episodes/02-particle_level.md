@@ -24,7 +24,7 @@ The dominant corrections arise from collinear and/or soft gluon emissions, which
 soft and collinear gluons to be added to the hard process.
 A hadronization model is needed to transform the quarks and gluons produced from the hard process and the parton shower into the
 physical (colorless) particles observed in Nature.
-In CMS, one of the most widely used tools for the parton shower and hadronization is Pythia8 (however, do note that Pythia8 is a multipurpose generator that is able to calculate hard process for certain physics processes).
+In CMS, one of the most widely used tools for the parton shower and hadronization is Pythia8 (however, do note that Pythia8 is a multipurpose generator that is able to calculate the hard process for certain physics processes).
 In this exercise, instead of compiling Pythia8 and running it in standalone mode as we did for MadGraph, we will take Pythia8 that is already compiled under CMSSW environment.
 
 ## (1) Running Pythia8 interface in CMSSW

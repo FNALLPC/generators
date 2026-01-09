@@ -476,7 +476,7 @@ python3.9 LHEReader.py --input genproductions_mg352/bin/MadGraph5_aMCatNLO/work/
 ~~~
 {: .source}
 
-Note: Make sure to hand the `--input` parameter your valid LHE file. If you ran the generation step multiple times, you may have other `run_XX` folders. It's always useful to take a direct look into the file you're looking to convert, as we did above.
+Note: Make sure to hand the `--input` parameter your valid LHE file. If you ran the generation step multiple times, you may have other `run_XX` folders. It's always useful to take a direct look into the file you're looking to convert, as we did above. This `LHEReader.py` script is also expecting an ASCII LHE file and MadGraph outputs a compressed `.gz` file. You may need to uncompress it with e.g. `gunzip`.
 
 Feel free to experiment here and plot various quantities. What are the shapes of the lepton pT distributions? What is the shape of the pT distribution of the W system? Are these shapes physical?
 

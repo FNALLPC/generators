@@ -18,16 +18,16 @@ keypoints:
 
 # Introduction and first steps
 
-See this (old, but still useful) review of Monte Carlo event generators for some background:  [link](https://arxiv.org/pdf/1304.6677.pdf).
+See this (old, but still useful) review of Monte Carlo event generators for some background:  [[link](https://arxiv.org/pdf/1304.6677.pdf)].
 Monte Carlo event generators are essential components of almost all experimental analyses and are also widely used by theorists and experiments to make predictions and preparations for future experiments.
-It is one of the topics where we CMS experimentalists and theorists have the closest connections to, theorists give us predictions and experimentalists verify them with the actual data.
-Although Monte Carlo event generators are extremely important tools in HEP, they are often used as black boxes which we more or less treat them as "data".
-Our aim is to get the minimal background of how these tools are working and analyze them using the generator level information.
+It is one of the topics where we CMS experimentalists and theorists have the closest connections to each other -- theorists give us predictions and experimentalists verify them with the actual data.
+Although Monte Carlo event generators are extremely important tools in HEP, they are often used as black boxes, whose output we more or less treat as "data".
+Our aim is to get the some background on how these tools work and analyze some outputs using generator level information.
 
-Samples that are used by CMS experiments go through several steps of simulation :
+Samples that are used by CMS experiments go through several steps of simulation:
 1. Monte Carlo event generator
 2. Detector simulation
-3. Pileup mixing
+3. Detector digitization and pileup mixing
 4. Trigger emulation
 5. Object reconstruction
 
@@ -43,15 +43,15 @@ Parton shower & hadronization further describes how the particles involved in th
 
 ## Using Standalone Madgraph
 
-In the first part of the exercise, we will use the matrix element generator MadGraph5 _aMC@NLO, or in short MadGraph [link](https://launchpad.net/mg5amcnlo).
-Note that MadGraph is a "matrix element" generator, and not an event generator.   MadGraph can calculate the hard scattering (large momentum transfer) partonic process at the core of an event, but, as noted above, this is only part of the story.
+In the first part of the exercise, we will use the matrix element generator MadGraph5 _aMC@NLO, or "MadGraph" for short [[link](https://launchpad.net/mg5amcnlo)].
+Note that MadGraph is a "matrix element" generator, represents only one step in the chain to a physically observable process.  MadGraph can calculate the hard scattering (large momentum transfer) partonic process at the core of an event, but, as noted above, this is only part of the story.
 MadGraph can perform the calculations for many different physics processes (both SM and BSM) at leading and next-to-leading order (LO & NLO) in QCD.
 Because of its easy user interface and flexibility with UFO models (that let you define the theory you are interested in), you can test a wide variety of physics hypotheses.
-We will first see how MadGraph runs interactively in standalone mode using simple `W+` (wplus) process as an example.
+We will first see how MadGraph runs interactively in standalone mode using simple `w+` (wplus) process as an example.
 
 We will first use the interactive prompt of MadGraph to generate proton proton collision events that produce W bosons.
 First, log in to a new session on the LPC cluster (`ssh -Y <USERNAME>@cmslpc-el8.fnal.gov`).
-Make sure you have completed the <a href="../setup.html">setup</a> steps!
+(Make sure you have completed the <a href="../setup.html">setup</a> steps!)
 Then, start the interactive prompt of Madgraph:
 ~~~bash
 cd ~/nobackup/cmsdas_2026_gen/MG5_aMC_v3_5_2/
@@ -82,7 +82,7 @@ output wplustest_4f_LO -nojpeg
 ~~~
 {: .output}
 
-**Copy/paste the commands line-by-line and pay attention to the output.**
+**Copy/paste the commands line-by-line and pay attention to the output. The lines starting with `#` are comments.**
 
 The two most important lines of this block are the model import (`import model sm-ckm`) and the instructions on the process to generate (`generate p p > w+, w+ > ell+ vl`).
 Within the MG directory you can find a directory `models`, that contains different pre-installed models.
@@ -166,6 +166,8 @@ DECAY  25 6.382339e-03 # WH
 ~~~
 {: .output}
 
+Close the current editor -- if you haven't explicitly changed your editor, you're likely in `vim`. In this case, you can exit with `:q`.
+
 Let's take a look at the `run card` and see how the values are set, press `2` and `ENTER` (\<RETURN\>) to investigate the run settings.
 ~~~
 #*********************************************************************
@@ -222,8 +224,8 @@ Let's take a look at the `run card` and see how the values are set, press `2` an
 ~~~
 {: .output}
 
-Try editting the beam energy (`ebeam1` and `ebeam2`) `6500` to `6800` as we are now running at 13.6TeV beam energy.
-When done with editting, escape after saving the changes in the text file.
+Try editting the beam energy (`ebeam1` and `ebeam2`) `6500` to `6800` as we are now running at 13.6 TeV beam energy.
+When done with editting, escape after saving the changes in the text file (again, if in `vim`, `:wq` will save the changes (`w`) and quit (`q`)).
 
 MadGraph allows you to change settings by interactively typing in below as well.
 ~~~
@@ -246,7 +248,7 @@ Keep in mind that the cuts you give before doing `set no_parton_cut` will be rem
 So don't forget to do `set no_parton_cut` before giving the cuts you wish to give.
 
 
-Once you are done, please provide the path to the pre-made run_card: `wplustest_4f_LO_run_card.dat`
+Once you are done, notice that the prompt allows you to hand it a path to a valid card. Please provide the path to the pre-made run_card that's in the same directory by just giving it: `wplustest_4f_LO_run_card.dat`
 
 
 What is the cross section determined by Madgraph?
@@ -457,7 +459,7 @@ There are multiple ways of analyzing an LHE file, each of which has its own adva
 For the purpose of this exercise, we will use a pre-made pyroot script. 
 ~~~bash
 cd ~/nobackup/cmsdas_2026_gen/
-cp /eos/uscms/store/user/cmsdas/2026/short_exercises/generators/LHEReader.py .
+xrdcp root://cmseos.fnal.gov//store/user/cmsdas/2026/short_exercises/Generators/LHEReader.py .
 ~~~
 {: .source}
 
@@ -473,6 +475,8 @@ python3.9 LHEReader.py --input MG5_aMC_v3_5_2/wplustest_4f_LO/Events/run_01/unwe
 python3.9 LHEReader.py --input genproductions_mg352/bin/MadGraph5_aMCatNLO/work/cmsgrid_final.lhe --output cmsgrid.root
 ~~~
 {: .source}
+
+Note: Make sure to hand the `--input` parameter your valid LHE file. If you ran the generation step multiple times, you may have other `run_XX` folders. It's always useful to take a direct look into the file you're looking to convert, as we did above. This `LHEReader.py` script is also expecting an ASCII LHE file and MadGraph outputs a compressed `.gz` file. You may need to uncompress it with e.g. `gunzip`.
 
 Feel free to experiment here and plot various quantities. What are the shapes of the lepton pT distributions? What is the shape of the pT distribution of the W system? Are these shapes physical?
 

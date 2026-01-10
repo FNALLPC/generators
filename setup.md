@@ -131,6 +131,8 @@ cmsrel CMSSW_12_4_8
 ~~~
 {: .source}
 
+Reminder: If the `cmsrel` command isn't found, it's likely because you have to `source /cvmfs/cms.cern.ch/cmsset_default.sh` or have that in your `.bash_profile`/`.bashrc`. Refer back to the DAS Pre-Exercises for more information
+
 <!-- ## Preparing CMSSW working area
 We start with pulling and installing the required CMS software (CMSSW).
 We use two versions: the older 10.6.19 is used for sample generation,

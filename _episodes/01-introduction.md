@@ -473,6 +473,7 @@ xrdcp root://cmseos.fnal.gov//store/user/cmsdas/2026/short_exercises/Generators/
 {: .callout}
 ~~~bash
 cd CMSSW_12_4_8/src; cmsenv; cd -
+gzip -d MG5_aMC_v3_5_2/wplustest_4f_LO/Events/run_01/unweighted_events.lhe.gz 
 python3.9 LHEReader.py --input MG5_aMC_v3_5_2/wplustest_4f_LO/Events/run_01/unweighted_events.lhe --output standalone.root
 python3.9 LHEReader.py --input genproductions_mg352/bin/MadGraph5_aMCatNLO/work/cmsgrid_final.lhe --output cmsgrid.root
 ~~~

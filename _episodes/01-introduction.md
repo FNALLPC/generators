@@ -10,18 +10,19 @@ objectives:
 - "Use the MadGraph generator in standalone mode and get familiar with the basic syntax"
 - "Analyze the produced LHE files"
 keypoints:
-- "MadGraph is a widely used tool to generate matrix-element predictions for the hard scatter for SM and BSM processes."
-- "Standalone MadGraph can run interactively on-the-fly or by importing the predefined text scripts"
-- "Gridpacks are used for large scale productions  with consistency guaranteed"
-- "LHE level information is not physical and parton shower is needed to describe full physics"
+- "MadGraph is a widely used tool to generate matrix-element predictions for the hard scattering process from SM and BSM physics."
+- "Standalone MadGraph can be run interactively on-the-fly or by importing the predefined text scripts"
+- "Gridpacks are part of grid-enabled workflows used for large scale productions with consistency guaranteed"
+- "LHE level predictions must be interfaced with parton shower and hadronization models to make realistic predictions"
 ---
 
 # Introduction and first steps
 
-See this (old, but still useful) review of Monte Carlo event generators for some background:  [[link](https://arxiv.org/pdf/1304.6677.pdf)].
 Monte Carlo event generators are essential components of almost all experimental analyses and are also widely used by theorists and experiments to make predictions and preparations for future experiments.
-It is one of the topics where we CMS experimentalists and theorists have the closest connections to each other -- theorists give us predictions and experimentalists verify them with the actual data.
-Although Monte Carlo event generators are extremely important tools in HEP, they are often used as black boxes, whose output we more or less treat as "data".
+See this (old, but still useful) review of Monte Carlo event generators for some background:  [[link](https://arxiv.org/pdf/1304.6677.pdf)].
+
+Event generators allow experimentalists and theorists to interact -- theorists give us predictions and experimentalists verify them with the actual data.
+Although Monte Carlo event generators are extremely important tools in HEP, they are often treated as black boxes, whose output we more or less treat as "data".
 Our aim is to get the some background on how these tools work and analyze some outputs using generator level information.
 
 Samples that are used by CMS experiments go through several steps of simulation:
@@ -31,10 +32,10 @@ Samples that are used by CMS experiments go through several steps of simulation:
 4. Trigger emulation
 5. Object reconstruction
 
-Monte Carlo event generator can be further divided into several subpieces as each steps can be factorized and can be handled through separate calculations :
+For this exercise, we focus on three important aspects behind Monte Carlo event generators:
 1. Parton distribution function (PDF)
 2. Hard scattering (matrix element calculation)
-3. Parton shower & hadronization
+3. Parton shower & hadronization models
    
 First of all, the LHC is a proton-proton collider, hence we need information on how partons (quarks and gluons) are distributed in the proton (PDF).
 Hard scattering is the part where calculations can be treated in fixed-order perturbation theory, modeling the interactions of incoming partons with the largest momentum transfer (usually the physics process we are interested in).
@@ -44,9 +45,10 @@ Parton shower & hadronization further describes how the particles involved in th
 ## Using Standalone Madgraph
 
 In the first part of the exercise, we will use the matrix element generator MadGraph5 _aMC@NLO, or "MadGraph" for short [[link](https://launchpad.net/mg5amcnlo)].
-Note that MadGraph is a "matrix element" generator, represents only one step in the chain to a physically observable process.  MadGraph can calculate the hard scattering (large momentum transfer) partonic process at the core of an event, but, as noted above, this is only part of the story.
+Note that MadGraph is a "matrix element" generator, representing only one step in the chain to a physically observable process.  MadGraph can calculate the hard scattering (large momentum transfer) partonic process at the core of an event, but, as noted above, this is only part of the story.
 MadGraph can perform the calculations for many different physics processes (both SM and BSM) at leading and next-to-leading order (LO & NLO) in QCD.
-Because of its easy user interface and flexibility with UFO models (that let you define the theory you are interested in), you can test a wide variety of physics hypotheses.
+
+Because of its convenient user interface and flexibility with UFO models (that let you define the theory you are interested in), you can test a wide variety of physics hypotheses.
 We will first see how MadGraph runs interactively in standalone mode using simple `w+` (wplus) process as an example.
 
 We will first use the interactive prompt of MadGraph to generate proton proton collision events that produce W bosons.

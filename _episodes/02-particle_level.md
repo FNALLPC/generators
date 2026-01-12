@@ -17,7 +17,7 @@ keypoints:
 
 # Creating particle level samples from LHE files
 
-As discussed earlier, LHE files itself are not enough to describe physical distributions.
+As discussed earlier, LHE-level predictions are not enough to describe physical distributions.
 In order to generate physics-wise sensible events, LHE files need to go through the parton shower and hadronization steps.
 The parton shower, in principle, is responsible for including higher order corrections to the hard process.
 The dominant corrections arise from collinear and/or soft gluon emissions, which lead to a large probability for many such

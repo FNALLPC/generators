@@ -18,6 +18,9 @@ keypoints:
 
 ## How to find samples and related information
 
+Sometimes you want to use a simulation sample that someone else has already produced.
+In that case, you need to know how to find it!
+
 Get configurations for a certain sample from [McM](https://cms-pdmv.cern.ch/mcm/requests?page=0&shown=127).
 E.g. you want the inclusive W+jets sample, start from a DAS query (requires a valid grid certificate / proxy):
 ~~~bash

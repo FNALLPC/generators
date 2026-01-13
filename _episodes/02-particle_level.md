@@ -382,6 +382,7 @@ not already there:
 
 ~~~bash
 cd ~/nobackup/cmsdas_2026_gen/CMSSW_12_4_8/src
+mkdir -p ${CONFIG_PATH}/
 xrdcp ${CDGPATH}/fragments/Hadronizer_TuneCP5_13TeV_MLM_5f_max2j_qCut10_LHE_pythia8_cff.py ${CONFIG_PATH}/
 cmsenv
 scram b
